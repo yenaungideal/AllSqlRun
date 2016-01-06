@@ -1,0 +1,3 @@
+http://www.toptal.com/sql/sql-database-tuning-for-developers
+
+http://dba.fyicenter.com/faq/sql_server/Index_Speeding_Up_SELECT_Statements.html
