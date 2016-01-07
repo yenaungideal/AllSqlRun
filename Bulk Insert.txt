@@ -1,0 +1,44 @@
+   DataTable dt = new DataTable();
+                        dt.Columns.AddRange(new DataColumn[2] 
+                        { 
+                            new DataColumn("SubConRFIID", typeof(Int32)),
+                            new DataColumn("JointID",typeof(Int32)) 
+                        });
+
+
+   foreach (object[] item in fieldValues)
+                        {
+                            Int32 JointID = -1;
+
+                            JointID = Convert.ToInt32(item[0]);
+                            string PieceMarkNo = Convert.ToString(item[2]);
+
+                            if (PieceMarkNo != null && PieceMarkNo.Trim().Length > 0
+                                    && JointID > 0 && Session["CurrentRFIFitupID"] != null && Convert.ToInt32(Session["CurrentRFIFitupID"]) > 0)
+                            {
+                                dt.Rows.Add(Convert.ToInt32(Session["CurrentRFIFitupID"]), JointID);
+                                //int retval = StructuralDataAccess.InsertSubConRequestDetails(Convert.ToInt32(Session["CurrentRFIFitupID"]), JointID, 0, -1, "", -1);
+                            }
+                        }
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            string consString = ConfigurationManager.ConnectionStrings["cuteexpress"].ConnectionString;
+                            using (SqlConnection con = new SqlConnection(consString))
+                            {
+                                using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+                                {
+                                    //Set the database table name
+                                    sqlBulkCopy.DestinationTableName = "dbo.BulkDB";
+
+                                    //[OPTIONAL]: Map the DataTable columns with that of the database table
+                                    sqlBulkCopy.ColumnMappings.Add("SubConRFIID", "SubConRFIID");
+                                    sqlBulkCopy.ColumnMappings.Add("JointID", "JointID");
+                                    con.Open();
+                                    sqlBulkCopy.WriteToServer(dt);
+                                    con.Close();
+                                }
+                            }
+                        }
+
+
