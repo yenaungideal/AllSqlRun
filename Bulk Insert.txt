@@ -6,6 +6,8 @@
                         });
 
 
+http://www.codeproject.com/Articles/703634/SOLID-architecture-principles-using-simple-Csharp
+
    foreach (object[] item in fieldValues)
                         {
                             Int32 JointID = -1;
