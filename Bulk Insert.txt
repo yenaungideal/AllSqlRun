@@ -45,3 +45,60 @@ http://www.codeproject.com/Articles/703634/SOLID-architecture-principles-using-s
 
 http://www.aspsnippets.com/Articles/Using-SqlBulkCopy-to-insert-bulk-data-from-GridView-to-database-in-ASPNet.aspx
 
+------------------------------------------------------------------------------------------------------------------
+
+CREATE TYPE [dbo].[BulkTempDB] AS TABLE
+         (
+         [SubConRFIID] [int]NOT NULL,
+         [JointID] [int] NOT NULL
+         )
+
+
+USE [cuteQM]
+GO
+/****** Object:  StoredProcedure [dbo].[ST_InsertSubConRequestDetails]    Script Date: 7/1/2016 5:10:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ST_BulkInsert] 
+	(@BulkTempDB BulkTempDB READONLY)
+AS
+BEGIN
+			INSERT INTO [BulkDB]
+            SELECT * FROM @BulkTempDB
+END
+
+
+
+ public static void ST_BulkInsert(DataTable dt)
+        {
+            try
+            {
+                string sqlCon = ConfigurationManager.ConnectionStrings["cuteexpress"].ConnectionString;
+                SqlConnection conn = new SqlConnection(sqlCon);
+                conn.Open();
+                //Create a command object that calls the stored procedure
+                SqlCommand cmdCustomer = new SqlCommand("ST_BulkInsert", conn);
+                cmdCustomer.CommandType = CommandType.StoredProcedure;
+                //Create a parameter using the new SQL DB type viz. Structured to pass as table value parameter
+                SqlParameter paramCustomer = cmdCustomer.Parameters.Add("@BulkTempDB", SqlDbType.Structured);
+                paramCustomer.Value = dt;
+                //Execute the query
+                cmdCustomer.ExecuteNonQuery(); 
+               
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+        }
+
+
+
+
+
+
+
+
