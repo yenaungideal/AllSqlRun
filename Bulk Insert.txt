@@ -41,4 +41,5 @@
                             }
                         }
 
+http://www.aspsnippets.com/Articles/Using-SqlBulkCopy-to-insert-bulk-data-from-GridView-to-database-in-ASPNet.aspx
 
