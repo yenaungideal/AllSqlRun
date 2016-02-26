@@ -1,0 +1,71 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChartControl.aspx.cs" Inherits="DevExpress.Listing.ChartControl" %>
+
+<%@ Register Assembly="DevExpress.XtraCharts.v14.2.Web, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraCharts.Web" TagPrefix="dxchartsui" %>
+
+
+<%@ Register assembly="DevExpress.XtraCharts.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraCharts" tagprefix="cc1" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        
+       <dxchartsui:WebChartControl ID="pieChart" runat="server" Height="400px" 
+        Width="700px" ClientInstanceName="chart" ToolTipEnabled="False" CrosshairEnabled="True" DataSourceID="objChartControl">
+           <diagramserializable>
+               <cc1:SimpleDiagram EqualPieSize="False">
+               </cc1:SimpleDiagram>
+           </diagramserializable>
+           <seriesserializable>
+               <cc1:Series Name="Pie" argumentdatamember="pAddress" valuedatamembersserializable="pCount" legendtextpattern="{A}">
+                   <viewserializable>
+                       <cc1:PieSeriesView>
+                       </cc1:PieSeriesView>
+                   </viewserializable>
+               </cc1:Series>
+           </seriesserializable>
+           <BorderOptions Visibility="False" />
+                <Titles>
+                    <cc1:ChartTitle Text="Population of Myanmar(Pie)"></cc1:ChartTitle>
+                    <cc1:ChartTitle Dock="Bottom" Alignment="Far" Text="From www.bea.gov" Font="Tahoma, 8pt" TextColor="Gray"></cc1:ChartTitle>
+                </Titles>
+       </dxchartsui:WebChartControl>
+        <dxchartsui:WebChartControl ID="barChart" runat="server" Height="400px" Width="700px" ClientInstanceName="chart" ToolTipEnabled="False" CrosshairEnabled="True" DataSourceID="objChartControl">
+            <diagramserializable>
+                <cc1:XYDiagram>
+                    <axisx visibleinpanesserializable="-1">
+                    </axisx>
+                    <axisy visibleinpanesserializable="-1" Title-Text="Population" Title-Visibility="True">
+                    </axisy>
+                </cc1:XYDiagram>
+            </diagramserializable>
+            <seriesserializable>
+                <cc1:Series Name="Bar" argumentdatamember="pAddress" valuedatamembersserializable="pCount" legendtextpattern="{A}">
+                    
+                    <viewserializable>
+                       <cc1:SideBySideBarSeriesView>
+                       </cc1:SideBySideBarSeriesView>
+                   </viewserializable>
+
+
+                </cc1:Series>
+            </seriesserializable>
+             <BorderOptions Visibility="False" />
+                <Titles>
+                    <cc1:ChartTitle Text="Population of Myanmar(Bar)"></cc1:ChartTitle>
+                    <cc1:ChartTitle Dock="Bottom" Alignment="Far" Text="Devexpress bar" Font="Tahoma, 8pt" TextColor="Gray"></cc1:ChartTitle>
+                </Titles>
+        </dxchartsui:WebChartControl>
+    </div>
+    <div>
+        <asp:ObjectDataSource ID="objChartControl" runat="server" TypeName="BusinessLogic.Controller" SelectMethod="Select_ChartData"></asp:ObjectDataSource>
+    </div>
+    </form>
+</body>
+</html>
