@@ -1,0 +1,23 @@
+update cuteLicense 
+set AuthorizationKey = '+Dz4YiBiWaM+A/oYermobYXYBzhNg4d+X4X6pqObAA+IjzK7RdL9MxS2lRECnO2aSB9EK/R+JDRHxmqW9QDdKA=='
+
+Keep it for future use.
+
+Gobalakrishnan
+IT Consultant
+
+From: cuteofficealerts@gmail.com [mailto:cuteofficealerts@gmail.com] 
+Sent: Friday, October 30, 2015 8:53 AM
+To: support@cutechgroup.com
+Subject: License Manager - New License Activation Notification
+
+Product: cuteQM 
+Created By: gobal
+Created Date: 10/30/2015
+Company Name: Ye CUTECH
+License Type: Full
+No.Of License(s): 
+Client License Key: 43C1-1951-E2E3-333B-094F-564A-912A-1696
+License Start Date : 20151030
+License End Date: 20161031
+Authorization Key: +Dz4YiBiWaM+A/oYermobYXYBzhNg4d+X4X6pqObAA+IjzK7RdL9MxS2lRECnO2aSB9EK/R+JDRHxmqW9QDdKA==
