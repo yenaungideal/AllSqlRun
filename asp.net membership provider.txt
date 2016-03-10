@@ -1,0 +1,1 @@
+http://www.stepcoder.com/Articles/10006/how-to-add-asp-net-membership-tables-to-the-existing-database
