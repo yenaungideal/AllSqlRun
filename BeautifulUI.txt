@@ -3,6 +3,8 @@ http://www.codeproject.com/Articles/281573/ASP-NET-Membership-and-Role-Provider
 http://www.mightydeals.com/deal/b3themes.html?ref=wdddealtab
 http://www.aspxtemplates.com/
 http://www.tutorialspoint.com/index.htm
-
+-----angular material---
+https://material.angularjs.org/latest/demo/chips
+---------------------------------------
 
 http://www.aspxtemplates.com/preview/dotnet-templates/bootstrap6/Default.aspx#
